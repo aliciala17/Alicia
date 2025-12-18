@@ -20,14 +20,14 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+        sans-serif;
       background:
         radial-gradient(1200px 600px at 20% -10%, rgba(182,194,250,0.25), transparent 60%),
         radial-gradient(800px 500px at 80% 10%, rgba(182,194,250,0.18), transparent 55%),
         linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
       color: var(--text);
       line-height: 1.7;
-      overflow-x: hidden;
     }
 
     a { color: var(--accent); text-decoration: none; }
@@ -37,22 +37,22 @@
       margin: 0 auto;
       padding: 72px 24px;
       position: relative;
-      z-index: 1;
     }
 
-    /* Language switch */
+    /* 语言切换 */
     .lang-switch {
       position: fixed;
-      top: 20px;
+      top: 24px;
       right: 24px;
-      font-size: 14px;
-      color: var(--muted);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 999px;
       cursor: pointer;
-      z-index: 10;
-    }
-    .lang-switch span.active {
+      font-size: 14px;
       color: var(--accent);
-      font-weight: 600;
+      background: rgba(182,194,250,0.08);
+      backdrop-filter: blur(6px);
+      z-index: 10;
     }
 
     header { margin-bottom: 96px; }
@@ -65,9 +65,16 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .tagline { color: var(--accent); margin-bottom: 10px; }
+    header .tagline {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
 
-    header p { font-size: 18px; color: var(--muted); max-width: 640px; }
+    header p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 640px;
+    }
 
     section { margin-bottom: 72px; }
 
@@ -92,14 +99,8 @@
     .exp-link {
       padding: 22px;
       border-radius: 20px;
-      background: linear-gradient(180deg, rgba(182,194,250,0.15), rgba(182,194,250,0.05));
       border: 1px solid var(--card-border);
-      transition: .25s;
-    }
-
-    .exp-link:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(182,194,250,0.25);
+      background: linear-gradient(180deg, rgba(182,194,250,0.15), rgba(182,194,250,0.05));
     }
 
     .photo-slider {
@@ -111,33 +112,24 @@
     .photo-slider img {
       height: 220px;
       border-radius: 18px;
-      object-fit: cover;
       border: 1px solid rgba(182,194,250,0.35);
     }
 
     footer {
       border-top: 1px solid rgba(182,194,250,0.25);
       padding-top: 36px;
-      color: var(--muted);
       font-size: 14px;
+      color: var(--muted);
     }
 
+    /* 多语言 */
     [data-lang] { display: none; }
-    [data-lang].active { display: block; }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 40px; }
-      section h2 { font-size: 24px; }
-    }
+    [data-lang="zh"] { display: block; }
   </style>
 </head>
 
 <body>
-
-  <!-- Language Switch -->
-  <div class="lang-switch">
-    <span id="zhBtn" class="active">ZH</span> / <span id="enBtn">EN</span>
-  </div>
+  <div class="lang-switch" onclick="toggleLang()">ZH / EN</div>
 
   <div class="container">
 
@@ -145,64 +137,81 @@
       <h1>Alicia</h1>
       <div class="tagline">AI × Web3 × Community Builder</div>
 
-      <p data-lang="zh" class="active">
-        一个热衷于探索 AI 的 00 后创作者<br>
-        #Web3 #AI #BD #中 / 英 / 法
-      </p>
-
-      <p data-lang="en">
-        A Gen-Z creator exploring AI and Web3<br>
-        #Web3 #AI #BD #CN / EN / FR
-      </p>
+      <p data-lang="zh">一个热衷于探索 AI 的 00 后创作者 #Web3 #AI #BD #中 / 英 / 法</p>
+      <p data-lang="en">A Gen-Z creator exploring AI, Web3, and early-stage community building.</p>
     </header>
 
     <section>
-      <h2 data-lang="zh" class="active">关于我</h2>
+      <h2 data-lang="zh">关于我</h2>
       <h2 data-lang="en">About Me</h2>
 
       <div class="card">
-        <p data-lang="zh" class="active">
+        <p data-lang="zh">
           我习惯从长期合作与生态视角思考问题，擅长在早期阶段建立信任关系并促成有效连接。
-          对 AI 与 Web3 的交叉应用保持高度敏感，善于将复杂概念转化为清晰表达。
+          在工作中兼具执行力与统筹能力，能够并行推进多项任务。
+          对 AI 与 Web3 的交叉应用保持高度敏感，并善于将复杂概念转化为清晰表达。
         </p>
-
         <p data-lang="en">
-          I approach work from a long-term, ecosystem-driven perspective,
-          focusing on building trust and meaningful connections in early-stage environments.
-          I’m highly sensitive to the intersection of AI and Web3,
-          and skilled at translating complex ideas into clear narratives.
+          I approach work from a long-term collaboration and ecosystem perspective.
+          I specialize in building trust and connections at early stages, balancing execution
+          and coordination while translating complex ideas into clear narratives.
         </p>
       </div>
     </section>
 
     <section>
-      <h2 data-lang="zh" class="active">照片</h2>
-      <h2 data-lang="en">Photos</h2>
+      <h2 data-lang="zh">经验</h2>
+      <h2 data-lang="en">Experience</h2>
 
-      <div class="photo-slider">
-        <img src="photo-1.jpg" alt="Alicia photo 1">
-        <img src="photo-2.jpg" alt="Alicia photo 2">
-        <img src="photo-3.jpg" alt="Alicia photo 3">
+      <div class="exp-links">
+        <div class="exp-link">
+          <h3>BD · GameFi</h3>
+          <p data-lang="zh">游戏项目冷启动与内测合作</p>
+          <p data-lang="en">Early-stage growth and playtest partnerships for GameFi projects</p>
+        </div>
+        <div class="exp-link">
+          <h3>VC · AI Incubation</h3>
+          <p data-lang="zh">AI 项目运营与生态建设</p>
+          <p data-lang="en">AI startup operations, events, and ecosystem development</p>
+        </div>
+        <div class="exp-link">
+          <h3>Gradient</h3>
+          <p data-lang="zh">中文社区内容与本地增长</p>
+          <p data-lang="en">Chinese community building and localization growth</p>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2 data-lang="zh" class="active">联系方式</h2>
+      <h2 data-lang="zh">正在探索</h2>
+      <h2 data-lang="en">Currently Exploring</h2>
+
+      <div class="card">
+        <p data-lang="zh">
+          · AI-native 产品与社区增长方式<br>
+          · Web3 与创作者经济的结合<br>
+          · 早期项目从 0 → 1 的冷启动策略
+        </p>
+        <p data-lang="en">
+          · AI-native products & community growth<br>
+          · Web3 and the creator economy<br>
+          · Go-to-market strategies for 0→1 startups
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-lang="zh">联系方式</h2>
       <h2 data-lang="en">Contact</h2>
 
       <div class="card">
-        <p data-lang="zh" class="active">
-          欢迎合作与交流<br>
-          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br>
-          X / Twitter: <a href="https://x.com/aliciafights">@aliciafights</a><br>
-          Telegram: <a href="https://t.me/aliciafights">@aliciafights</a>
-        </p>
+        <p data-lang="zh">欢迎合作与交流</p>
+        <p data-lang="en">Open to collaboration and conversations</p>
 
-        <p data-lang="en">
-          Open to collaboration and early-stage projects<br>
+        <p>
           📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br>
-          X / Twitter: <a href="https://x.com/aliciafights">@aliciafights</a><br>
-          Telegram: <a href="https://t.me/aliciafights">@aliciafights</a>
+          X / Twitter: <a href="https://x.com/aliciafights" target="_blank">@aliciafights</a><br>
+          Telegram: <a href="https://t.me/aliciafights" target="_blank">@aliciafights</a>
         </p>
       </div>
     </section>
@@ -214,23 +223,18 @@
   </div>
 
   <script>
-    const zhBtn = document.getElementById('zhBtn');
-    const enBtn = document.getElementById('enBtn');
-
-    function switchLang(lang) {
+    let currentLang = 'zh';
+    function toggleLang() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
       document.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.toggle('active', el.dataset.lang === lang);
+        el.style.display = el.dataset.lang === currentLang ? 'block' : 'none';
       });
-      zhBtn.classList.toggle('active', lang === 'zh');
-      enBtn.classList.toggle('active', lang === 'en');
     }
-
-    zhBtn.onclick = () => switchLang('zh');
-    enBtn.onclick = () => switchLang('en');
   </script>
-
 </body>
 </html>
+
+
 
 
 
