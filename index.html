@@ -4,14 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alicia | Personal Website</title>
+
   <style>
     :root {
-      --bg-start: #0f0f14;
-      --bg-end: #16161d;
-      --card: rgba(255, 255, 255, 0.05);
-      --text: #eaeaf0;
-      --muted: #9a9aa5;
-      --accent: #7c7cff;
+      --accent: #B6C2FA;
+
+      --bg-1: #0e1024;
+      --bg-2: #161a3a;
+      --bg-3: #1e2255;
+
+      --card-bg: rgba(182, 194, 250, 0.08);
+      --card-border: rgba(182, 194, 250, 0.25);
+
+      --text: #eef0ff;
+      --muted: rgba(238, 240, 255, 0.7);
     }
 
     * {
@@ -24,9 +30,14 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
         sans-serif;
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(182,194,250,0.25), transparent 60%),
+        radial-gradient(800px 500px at 80% 10%, rgba(182,194,250,0.18), transparent 55%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       overflow-x: hidden;
       position: relative;
     }
@@ -39,19 +50,22 @@
     .container {
       max-width: 960px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 72px 24px;
       position: relative;
       z-index: 1;
     }
 
     header {
-      margin-bottom: 80px;
+      margin-bottom: 96px;
     }
 
     header h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 16px;
       letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
@@ -61,52 +75,54 @@
     }
 
     section {
-      margin-bottom: 64px;
+      margin-bottom: 72px;
     }
 
-    .photo-slider {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      scroll-snap-type: x mandatory;
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
     }
 
-    .photo-slider::-webkit-scrollbar {
-      height: 6px;
+    /* 卡片 */
+    .card {
+      background: linear-gradient(
+        180deg,
+        rgba(182,194,250,0.12),
+        rgba(182,194,250,0.03)
+      );
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
     }
 
-    .photo-slider::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.2);
-      border-radius: 4px;
+    .card p {
+      color: var(--muted);
     }
 
-    .photo-slider img {
-      height: 220px;
-      border-radius: 16px;
-      object-fit: cover;
-      scroll-snap-align: start;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
+    /* Experience */
     .exp-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      gap: 20px;
     }
 
     .exp-link {
-      display: block;
-      padding: 20px;
-      border-radius: 16px;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(
+        180deg,
+        rgba(182,194,250,0.15),
+        rgba(182,194,250,0.05)
+      );
+      border: 1px solid var(--card-border);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
     .exp-link:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(182,194,250,0.25);
     }
 
     .exp-link h3 {
@@ -115,30 +131,31 @@
     }
 
     .exp-link p {
-      color: var(--muted);
       font-size: 14px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .card p {
       color: var(--muted);
+    }
+
+    /* Photos（已移动到 Experience 下方） */
+    .photo-slider {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .photo-slider img {
+      height: 220px;
+      border-radius: 18px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border: 1px solid rgba(182,194,250,0.35);
+      box-shadow: 0 10px 30px rgba(182,194,250,0.25);
     }
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 32px;
+      border-top: 1px solid rgba(182,194,250,0.25);
+      padding-top: 36px;
       color: var(--muted);
       font-size: 14px;
       display: flex;
@@ -147,27 +164,13 @@
       gap: 16px;
     }
 
-    .links a {
-      margin-right: 16px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 36px;
-      }
-      section h2 {
-        font-size: 24px;
-      }
-    }
-
-    /* 透明白色蝴蝶 */
+    /* 蝴蝶（保留，风格更柔） */
     .butterfly {
       position: absolute;
       width: 24px;
       height: 24px;
-      background: transparent;
-      border-radius: 50%;
       pointer-events: none;
+      opacity: 0.6;
       animation: floatButterfly linear infinite;
     }
 
@@ -175,36 +178,37 @@
     .butterfly::after {
       content: '';
       position: absolute;
-      width: 12px;
-      height: 12px;
-      background: rgba(255,255,255,0.5);
+      width: 14px;
+      height: 14px;
+      background: rgba(255,255,255,0.7);
       border-radius: 50%;
-      top: 0;
+      top: 4px;
     }
 
-    .butterfly::before {
-      left: -6px;
-    }
-
-    .butterfly::after {
-      right: -6px;
-    }
+    .butterfly::before { left: -4px; }
+    .butterfly::after { right: -4px; }
 
     @keyframes floatButterfly {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.6; }
-      50% { transform: translate(100vw, 50vh) rotate(360deg); opacity: 0.8; }
-      90% { opacity: 0.6; }
-      100% { transform: translate(-100vw, -50vh) rotate(720deg); opacity: 0; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: .5; }
+      50% { transform: translateY(-40vh) rotate(360deg); }
+      100% { transform: translateY(-80vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 40px; }
+      section h2 { font-size: 24px; }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
+
     <header>
       <h1>Alicia</h1>
-      <p>一个热衷于探索AI的创作者 
-      #Web3 #AI #BD #中/英/法</p>
+      <p>一个热衷于探索 AI 的创作者  
+      #Web3 #AI #BD #中 / 英 / 法</p>
     </header>
 
     <section>
@@ -212,20 +216,9 @@
       <div class="card">
         <p>
           性格外向，擅长建立人际链接，沟通高效，能快速识别并促成潜在合作机会。
-          具备高度执行力与统筹力，能同时推进多个任务，保证进度与质量并重。 
-          对新技术和新趋势保持高度敏感，主动学习能力强，乐于接受挑战。
+          具备高度执行力与统筹力，能同时推进多个任务。
+          对新技术和新趋势保持高度敏感，乐于接受挑战。
         </p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Photos</h2>
-      <div class="photo-slider">
-        <img src="photo-1.jpg" alt="Alicia photo 1" />
-        <img src="photo-2.jpg" alt="Alicia photo 2" />
-        <img src="photo-3.jpg" alt="Alicia photo 3" />
-        <img src="photo-4.jpg" alt="Alicia photo 4" />
-        <img src="photo-5.jpg" alt="Alicia photo 5" />
       </div>
     </section>
 
@@ -234,16 +227,28 @@
       <div class="exp-links">
         <a class="exp-link" href="https://x.com/DarkStar_game" target="_blank">
           <h3>BD In GameFi</h3>
-          <p>负责游戏项目冷启动以及游戏内测，与Dark Star、The Sandbox、Counter Fire 等知名游戏项目合作</p>
+          <p>游戏项目冷启动与内测合作</p>
         </a>
         <a class="exp-link" href="https://x.com/RyzeLabs" target="_blank">
-          <h3>VC项目孵化</h3>
-          <p>负责AI项目运营、活动设计与早期生态建设</p>
+          <h3>VC 项目孵化</h3>
+          <p>AI 项目运营与早期生态建设</p>
         </a>
         <a class="exp-link" href="https://x.com/Gradient_HQ" target="_blank">
           <h3>Gradient 中文社区</h3>
-          <p>中文社区内容运营与本地化增长</p>
+          <p>社区内容与本地化增长</p>
         </a>
+      </div>
+    </section>
+
+    <!-- Photos 已移动到这里 -->
+    <section>
+      <h2>Photos</h2>
+      <div class="photo-slider">
+        <img src="photo-1.jpg">
+        <img src="photo-2.jpg">
+        <img src="photo-3.jpg">
+        <img src="photo-4.jpg">
+        <img src="photo-5.jpg">
       </div>
     </section>
 
@@ -251,9 +256,9 @@
       <h2>Contact</h2>
       <div class="card">
         <p>
-          邮箱：aliciazhou03@gmail.com<br />
-          Twitter / X: @aliciafights<br />  
-          Telegram: @aliciafights<br />
+          📧 aliciazhou03@gmail.com<br />
+          X / Twitter：@aliciafights<br />
+          Telegram：@aliciafights
         </p>
       </div>
     </section>
@@ -266,18 +271,17 @@
     </footer>
   </div>
 
-  <!-- 蝴蝶元素 -->
   <script>
-    const butterflyCount = 12;
-    for(let i=0; i<butterflyCount; i++){
-      const butterfly = document.createElement('div');
-      butterfly.className = 'butterfly';
-      butterfly.style.top = Math.random() * 80 + 'vh';
-      butterfly.style.left = Math.random() * 100 + 'vw';
-      butterfly.style.animationDuration = (15 + Math.random() * 20) + 's';
-      document.body.appendChild(butterfly);
+    for(let i = 0; i < 10; i++){
+      const b = document.createElement('div');
+      b.className = 'butterfly';
+      b.style.left = Math.random() * 100 + 'vw';
+      b.style.top = 100 + Math.random() * 20 + 'vh';
+      b.style.animationDuration = 18 + Math.random() * 20 + 's';
+      document.body.appendChild(b);
     }
   </script>
 </body>
 </html>
+
 
