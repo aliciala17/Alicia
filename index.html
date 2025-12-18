@@ -4,56 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alicia | Personal Website</title>
+
   <style>
     :root {
       --accent: #B6C2FA;
+
       --bg-1: #0e1024;
       --bg-2: #161a3a;
       --bg-3: #1e2255;
+
       --card-bg: rgba(182, 194, 250, 0.08);
       --card-border: rgba(182, 194, 250, 0.25);
+
       --text: #eef0ff;
       --muted: rgba(238, 240, 255, 0.7);
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
         sans-serif;
+
       background:
         radial-gradient(1200px 600px at 20% -10%, rgba(182,194,250,0.25), transparent 60%),
         radial-gradient(800px 500px at 80% 10%, rgba(182,194,250,0.18), transparent 55%),
         linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
       position: relative;
     }
-    a { color: var(--accent); text-decoration:none; }
-    .container { max-width: 960px; margin:0 auto; padding:72px 24px; position:relative; z-index:1; }
-    header { margin-bottom: 96px; position: relative; }
-    header h1 { font-size: 52px; margin-bottom:12px; letter-spacing:-0.02em; background: linear-gradient(135deg,#ffffff,var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    header .tagline { color: var(--accent); font-weight: 500; margin-bottom:10px; }
-    header p { font-size:18px; color: var(--muted); max-width:640px; }
 
-    /* 语言切换按钮 */
+    a { color: var(--accent); text-decoration: none; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 72px 24px; position: relative; z-index: 1; }
+
+    header { margin-bottom: 96px; }
+    header h1 {
+      font-size: 52px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header .tagline { color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+    header p { font-size: 18px; color: var(--muted); max-width: 640px; }
+
     #langToggle {
-      position: absolute;
-      top:0;
-      right:0;
-      margin:10px;
-      padding:6px 12px;
-      border-radius:12px;
-      border:1px solid var(--accent);
-      background: rgba(0,0,0,0.2);
-      color: var(--accent);
+      margin-top: 12px;
+      padding: 6px 12px;
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      font-size:14px;
-      z-index:10;
+      color: #161a3a;
+      font-weight: bold;
     }
 
-    section { margin-bottom:72px; }
-    section h2 { font-size:30px; margin-bottom:28px; letter-spacing:-0.01em; }
+    section { margin-bottom: 72px; }
+    section h2 { font-size: 30px; margin-bottom: 28px; letter-spacing: -0.01em; }
 
     .card {
       background: linear-gradient(180deg, rgba(182,194,250,0.12), rgba(182,194,250,0.03));
@@ -64,58 +77,94 @@
     }
     .card p { color: var(--muted); }
 
-    .exp-links { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; }
+    .exp-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
     .exp-link {
-      padding:22px;
-      border-radius:20px;
+      padding: 22px;
+      border-radius: 20px;
       background: linear-gradient(180deg, rgba(182,194,250,0.15), rgba(182,194,250,0.05));
-      border:1px solid var(--card-border);
+      border: 1px solid var(--card-border);
       transition: transform .25s ease, box-shadow .25s ease;
     }
-    .exp-link:hover { transform: translateY(-6px); box-shadow:0 12px 30px rgba(182,194,250,0.25); }
-    .exp-link h3 { margin-bottom:8px; font-size:18px; }
-    .exp-link p { font-size:14px; color:var(--muted); }
+    .exp-link:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(182,194,250,0.25); }
+    .exp-link h3 { margin-bottom: 8px; font-size: 18px; }
+    .exp-link p { font-size: 14px; color: var(--muted); }
 
-    .photo-slider { display:flex; gap:18px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; }
-    .photo-slider img { height:220px; border-radius:18px; object-fit:cover; scroll-snap-align:start; border:1px solid rgba(182,194,250,0.35); box-shadow:0 10px 30px rgba(182,194,250,0.25); }
+    .photo-slider {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+    }
+    .photo-slider img {
+      height: 220px;
+      border-radius: 18px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border: 1px solid rgba(182,194,250,0.35);
+      box-shadow: 0 10px 30px rgba(182,194,250,0.25);
+    }
 
-    footer { border-top:1px solid rgba(182,194,250,0.25); padding-top:36px; color: var(--muted); font-size:14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+    footer {
+      border-top: 1px solid rgba(182,194,250,0.25);
+      padding-top: 36px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
     .butterfly {
-      position:absolute;
-      width:24px;
-      height:24px;
-      pointer-events:none;
-      opacity:0.6;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      opacity: 0.6;
       animation: floatButterfly linear infinite;
     }
-    .butterfly::before, .butterfly::after {
-      content:''; position:absolute; width:14px; height:14px; background: rgba(255,255,255,0.7); border-radius:50%; top:4px;
+    .butterfly::before,
+    .butterfly::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      top: 4px;
     }
-    .butterfly::before{ left:-4px; } .butterfly::after{ right:-4px; }
+    .butterfly::before { left: -4px; }
+    .butterfly::after { right: -4px; }
 
-    @keyframes floatButterfly { 0%{ transform:translateY(0) rotate(0deg); opacity:0; } 20%{ opacity:.5; } 50%{ transform:translateY(-40vh) rotate(360deg); } 100%{ transform:translateY(-80vh) rotate(720deg); opacity:0; }
-
+    @keyframes floatButterfly {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: .5; }
+      50% { transform: translateY(-40vh) rotate(360deg); }
+      100% { transform: translateY(-80vh) rotate(720deg); opacity: 0; }
     }
-    .en { display:none; }
 
-    @media(max-width:600px){ header h1{ font-size:40px;} section h2{ font-size:24px;} }
+    @media (max-width: 600px) {
+      header h1 { font-size: 40px; }
+      section h2 { font-size: 24px; }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <button id="langToggle">EN</button>
-
     <header>
       <h1>Alicia</h1>
-      <div class="tagline">
-        <span class="cn">AI × Web3 × 社区建设者</span>
-        <span class="en">AI × Web3 × Community Builder</span>
-      </div>
+      <div class="tagline">AI × Web3 × Community Builder</div>
       <p>
         <span class="cn">一个热衷于探索 AI 的 00 后创作者 #Web3 #AI #BD #中 / 英 / 法</span>
-        <span class="en">A young creator passionate about exploring AI #Web3 #AI #BD #CN/EN/FR</span>
+        <span class="en">A young creator passionate about AI, Web3, and community building #Web3 #AI #BD #CN / EN / FR</span>
       </p>
+      <button id="langToggle">EN</button>
     </header>
 
     <section>
@@ -123,7 +172,7 @@
       <div class="card">
         <p>
           <span class="cn">我习惯从长期合作与生态视角思考问题，擅长在早期阶段建立信任关系并促成有效连接。在工作中兼具执行力与统筹能力，能够并行推进多项任务。对 AI 与 Web3 的交叉应用保持高度敏感，关注技术如何真正落地到用户与社区，并善于将复杂概念转化为清晰、有吸引力的表达。</span>
-          <span class="en">I approach problems from a long-term collaboration and ecosystem perspective, skilled at building trust in early stages and facilitating meaningful connections. I combine execution and coordination skills, can handle multiple tasks simultaneously, and am highly sensitive to AI and Web3 intersections, translating complex concepts into clear and engaging communication.</span>
+          <span class="en">I approach problems from a long-term collaboration and ecosystem perspective, skilled at building trust and effective connections early on. I combine execution and coordination in my work, handling multiple tasks simultaneously. I am highly sensitive to AI and Web3 intersections, focusing on how technology truly reaches users and communities, translating complex concepts into clear, engaging expressions.</span>
         </p>
       </div>
     </section>
@@ -133,15 +182,15 @@
       <div class="exp-links">
         <a class="exp-link" href="https://x.com/DarkStar_game" target="_blank">
           <h3><span class="cn">BD · GameFi</span><span class="en">BD · GameFi</span></h3>
-          <p><span class="cn">游戏项目冷启动与早期用户合作搭建</span><span class="en">Early-stage GameFi project launch and user onboarding</span></p>
+          <p><span class="cn">游戏项目冷启动与早期用户合作搭建</span><span class="en">Early-stage GameFi project launch and user collaboration</span></p>
         </a>
         <a class="exp-link" href="https://x.com/RyzeLabs" target="_blank">
-          <h3><span class="cn">VC 项目孵化</span><span class="en">VC · AI Project Incubation</span></h3>
+          <h3><span class="cn">VC 项目孵化</span><span class="en">VC Project Incubation</span></h3>
           <p><span class="cn">AI 项目运营、活动设计与生态建设</span><span class="en">AI project operations, event design, and ecosystem building</span></p>
         </a>
         <a class="exp-link" href="https://x.com/Gradient_HQ" target="_blank">
           <h3><span class="cn">Gradient 中文社区</span><span class="en">Gradient Chinese Community</span></h3>
-          <p><span class="cn">内容体系建设与本地增长策略</span><span class="en">Content system development and local growth strategy</span></p>
+          <p><span class="cn">内容体系建设与本地增长策略</span><span class="en">Content system construction and local growth strategy</span></p>
         </a>
       </div>
     </section>
@@ -149,18 +198,18 @@
     <section>
       <div class="card">
         <p>
-          <span class="cn">2022年底实习期间接触Web3行业，从事矿机社媒运营。2023年毕业后进入GameFi赛道，负责游戏项目冷启动与内测合作，并与The Sandbox、Counter Fire等项目展开合作。2024年进入VC机构参与AI项目孵化，负责运营活动设计与生态建设，随后加入Gradient团队，负责中文社区内容运营与本地增长，策划并组织多场线上线下活动。</span>
-          <span class="en">In late 2022, I started working in the Web3 industry, managing mining machine social media. After graduation in 2023, I entered GameFi, leading early-stage project launches and collaborations with The Sandbox, Counter Fire, and others. In 2024, I joined a VC firm for AI project incubation and later Gradient team for Chinese community management and growth, organizing multiple online and offline events.</span>
+          <span class="cn">2022 年底实习期间接触 Web3 行业，从事矿机社媒运营。2023 年毕业后进入 GameFi 赛道，负责游戏项目的冷启动与内测合作，并与 The Sandbox、Counter Fire 等项目展开合作。2024 年进入 VC 机构参与 AI 项目孵化，负责运营活动设计与生态建设，随后加入 Gradient 团队，负责中文社区内容运营与本地增长，策划并组织多场线上线下活动。</span>
+          <span class="en">At the end of 2022, I interned in the Web3 industry managing mining machine social media. After graduating in 2023, I entered the GameFi space, handling project launches and beta testing, collaborating with The Sandbox, Counter Fire, and others. In 2024, I joined a VC firm to incubate AI projects, overseeing operations, events, and ecosystem building. Later, I joined Gradient to manage the Chinese community content and local growth, organizing multiple online and offline events.</span>
         </p>
       </div>
     </section>
 
     <section>
-      <h2><span class="cn">正在探索</span><span class="en">Currently Exploring</span></h2>
+      <h2><span class="cn">正在探索</span><span class="en">Exploring</span></h2>
       <div class="card">
         <p>
           <span class="cn">· AI-native 产品与社区增长方式<br>· Web3 与创作者经济的结合<br>· 早期项目从 0 → 1 的冷启动策略</span>
-          <span class="en">· AI-native products and community growth<br>· Integration of Web3 and creator economy<br>· Early-stage projects from 0 → 1 launch strategies</span>
+          <span class="en">· AI-native product and community growth strategies<br>· Web3 and creator economy integration<br>· Early-stage 0 → 1 project launch strategies</span>
         </p>
       </div>
     </section>
@@ -168,11 +217,11 @@
     <section>
       <h2><span class="cn">照片</span><span class="en">Photos</span></h2>
       <div class="photo-slider">
-        <img src="images/photo-1.jpg" alt="Alicia photo 1">
-        <img src="images/photo-2.jpg" alt="Alicia photo 2">
-        <img src="images/photo-3.jpg" alt="Alicia photo 3">
-        <img src="images/photo-4.jpg" alt="Alicia photo 4">
-        <img src="images/photo-5.jpg" alt="Alicia photo 5">
+        <img src="photo-1.jpg">
+        <img src="photo-2.jpg">
+        <img src="photo-3.jpg">
+        <img src="photo-4.jpg">
+        <img src="photo-5.jpg">
       </div>
     </section>
 
@@ -181,12 +230,12 @@
       <div class="card">
         <p style="margin-bottom:12px;">
           <span class="cn">欢迎各种合作私信：头脑风暴，社区建设，早期项目</span>
-          <span class="en">Open to collaborations: brainstorming, community building, early-stage projects</span>
+          <span class="en">Open for collaboration: brainstorming, community building, early-stage projects</span>
         </p>
         <p>
-          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br>
-          X / Twitter: <a href="https://x.com/aliciafights" target="_blank">@aliciafights</a><br>
-          Telegram: <a href="https://t.me/aliciafights" target="_blank">@aliciafights</a>
+          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br />
+          X / Twitter：<a href="https://x.com/aliciafights" target="_blank">@aliciafights</a><br />
+          Telegram：<a href="https://t.me/aliciafights" target="_blank">@aliciafights</a>
         </p>
       </div>
     </section>
@@ -198,26 +247,41 @@
 
   <script>
     // 蝴蝶动画
-    for(let i=0;i<10;i++){
-      const b=document.createElement('div');
-      b.className='butterfly';
-      b.style.left=Math.random()*100+'vw';
-      b.style.top=100+Math.random()*20+'vh';
-      b.style.animationDuration=18+Math.random()*20+'s';
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement('div');
+      b.className = 'butterfly';
+      b.style.left = Math.random() * 100 + 'vw';
+      b.style.top = 100 + Math.random() * 20 + 'vh';
+      b.style.animationDuration = 18 + Math.random() * 20 + 's';
       document.body.appendChild(b);
     }
 
-    // 语言切换
-    const btn=document.getElementById('langToggle');
-    btn.addEventListener('click', ()=>{
-      const cn=document.querySelectorAll('.cn');
-      const en=document.querySelectorAll('.en');
-      cn.forEach(e=>e.style.display= e.style.display==='none'? 'inline':'none');
-      en.forEach(e=>e.style.display= e.style.display==='none'? 'inline':'none');
+    // 中英切换逻辑
+    const btn = document.getElementById('langToggle');
+    const cn = document.querySelectorAll('.cn');
+    const en = document.querySelectorAll('.en');
+
+    // 初始化：显示中文，隐藏英文
+    cn.forEach(e => e.style.display = 'inline');
+    en.forEach(e => e.style.display = 'none');
+
+    btn.addEventListener('click', () => {
+      const isCN = cn[0].style.display === 'inline';
+      if (isCN) {
+        cn.forEach(e => e.style.display = 'none');
+        en.forEach(e => e.style.display = 'inline');
+        btn.textContent = 'CN';
+      } else {
+        cn.forEach(e => e.style.display = 'inline');
+        en.forEach(e => e.style.display = 'none');
+        btn.textContent = 'EN';
+      }
     });
   </script>
 </body>
 </html>
+
+
 
 
 
