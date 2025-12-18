@@ -8,44 +8,29 @@
   <style>
     :root {
       --accent: #B6C2FA;
-
       --bg-1: #0e1024;
       --bg-2: #161a3a;
       --bg-3: #1e2255;
-
-      --card-bg: rgba(182, 194, 250, 0.08);
       --card-border: rgba(182, 194, 250, 0.25);
-
       --text: #eef0ff;
       --muted: rgba(238, 240, 255, 0.7);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-        sans-serif;
-
+        Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       background:
         radial-gradient(1200px 600px at 20% -10%, rgba(182,194,250,0.25), transparent 60%),
         radial-gradient(800px 500px at 80% 10%, rgba(182,194,250,0.18), transparent 55%),
         linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
-
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
-      position: relative;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    a { color: var(--accent); text-decoration: none; }
 
     .container {
       max-width: 960px;
@@ -55,56 +40,48 @@
       z-index: 1;
     }
 
-    header {
-      margin-bottom: 96px;
+    /* Language switch */
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      z-index: 10;
     }
+    .lang-switch span.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    header { margin-bottom: 96px; }
 
     header h1 {
       font-size: 52px;
       margin-bottom: 12px;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, var(--accent));
+      background: linear-gradient(135deg, #fff, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    header .tagline {
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
+    .tagline { color: var(--accent); margin-bottom: 10px; }
 
-    header p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 640px;
-    }
+    header p { font-size: 18px; color: var(--muted); max-width: 640px; }
 
-    section {
-      margin-bottom: 72px;
-    }
+    section { margin-bottom: 72px; }
 
-    section h2 {
-      font-size: 30px;
-      margin-bottom: 28px;
-      letter-spacing: -0.01em;
-    }
+    section h2 { font-size: 30px; margin-bottom: 28px; }
 
     .card {
-      background: linear-gradient(
-        180deg,
-        rgba(182,194,250,0.12),
-        rgba(182,194,250,0.03)
-      );
+      background: linear-gradient(180deg, rgba(182,194,250,0.12), rgba(182,194,250,0.03));
       border: 1px solid var(--card-border);
       border-radius: 20px;
       padding: 28px;
       backdrop-filter: blur(8px);
     }
 
-    .card p {
-      color: var(--muted);
-    }
+    .card p { color: var(--muted); }
 
     .exp-links {
       display: grid;
@@ -115,13 +92,9 @@
     .exp-link {
       padding: 22px;
       border-radius: 20px;
-      background: linear-gradient(
-        180deg,
-        rgba(182,194,250,0.15),
-        rgba(182,194,250,0.05)
-      );
+      background: linear-gradient(180deg, rgba(182,194,250,0.15), rgba(182,194,250,0.05));
       border: 1px solid var(--card-border);
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: .25s;
     }
 
     .exp-link:hover {
@@ -129,31 +102,17 @@
       box-shadow: 0 12px 30px rgba(182,194,250,0.25);
     }
 
-    .exp-link h3 {
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .exp-link p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
     .photo-slider {
       display: flex;
       gap: 18px;
       overflow-x: auto;
-      padding-bottom: 10px;
-      scroll-snap-type: x mandatory;
     }
 
     .photo-slider img {
       height: 220px;
       border-radius: 18px;
       object-fit: cover;
-      scroll-snap-align: start;
       border: 1px solid rgba(182,194,250,0.35);
-      box-shadow: 0 10px 30px rgba(182,194,250,0.25);
     }
 
     footer {
@@ -161,41 +120,10 @@
       padding-top: 36px;
       color: var(--muted);
       font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
     }
 
-    .butterfly {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      pointer-events: none;
-      opacity: 0.6;
-      animation: floatButterfly linear infinite;
-    }
-
-    .butterfly::before,
-    .butterfly::after {
-      content: '';
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      background: rgba(255,255,255,0.7);
-      border-radius: 50%;
-      top: 4px;
-    }
-
-    .butterfly::before { left: -4px; }
-    .butterfly::after { right: -4px; }
-
-    @keyframes floatButterfly {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      20% { opacity: .5; }
-      50% { transform: translateY(-40vh) rotate(360deg); }
-      100% { transform: translateY(-80vh) rotate(720deg); opacity: 0; }
-    }
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
 
     @media (max-width: 600px) {
       header h1 { font-size: 40px; }
@@ -205,111 +133,102 @@
 </head>
 
 <body>
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <span id="zhBtn" class="active">ZH</span> / <span id="enBtn">EN</span>
+  </div>
+
   <div class="container">
 
     <header>
       <h1>Alicia</h1>
       <div class="tagline">AI × Web3 × Community Builder</div>
-      <p>一个热衷于探索 AI 的 00 后创作者  
-      #Web3 #AI #BD #中 / 英 / 法</p>
+
+      <p data-lang="zh" class="active">
+        一个热衷于探索 AI 的 00 后创作者<br>
+        #Web3 #AI #BD #中 / 英 / 法
+      </p>
+
+      <p data-lang="en">
+        A Gen-Z creator exploring AI and Web3<br>
+        #Web3 #AI #BD #CN / EN / FR
+      </p>
     </header>
 
     <section>
-      <h2>关于我</h2>
+      <h2 data-lang="zh" class="active">关于我</h2>
+      <h2 data-lang="en">About Me</h2>
+
       <div class="card">
-        <p>
+        <p data-lang="zh" class="active">
           我习惯从长期合作与生态视角思考问题，擅长在早期阶段建立信任关系并促成有效连接。
-          在工作中兼具执行力与统筹能力，能够并行推进多项任务。
-          对 AI 与 Web3 的交叉应用保持高度敏感，关注技术如何真正落地到用户与社区，
-          并善于将复杂概念转化为清晰、有吸引力的表达。
+          对 AI 与 Web3 的交叉应用保持高度敏感，善于将复杂概念转化为清晰表达。
+        </p>
+
+        <p data-lang="en">
+          I approach work from a long-term, ecosystem-driven perspective,
+          focusing on building trust and meaningful connections in early-stage environments.
+          I’m highly sensitive to the intersection of AI and Web3,
+          and skilled at translating complex ideas into clear narratives.
         </p>
       </div>
     </section>
 
     <section>
-      <h2>经验</h2>
-      <div class="exp-links">
-        <a class="exp-link" href="https://x.com/DarkStar_game" target="_blank">
-          <h3>BD · GameFi</h3>
-          <p>游戏项目冷启动与早期用户合作搭建</p>
-        </a>
-        <a class="exp-link" href="https://x.com/RyzeLabs" target="_blank">
-          <h3>VC 项目孵化</h3>
-          <p>AI 项目运营、活动设计与生态建设</p>
-        </a>
-        <a class="exp-link" href="https://x.com/Gradient_HQ" target="_blank">
-          <h3>Gradient 中文社区</h3>
-          <p>内容体系建设与本地增长策略</p>
-        </a>
-      </div>
-    </section>
+      <h2 data-lang="zh" class="active">照片</h2>
+      <h2 data-lang="en">Photos</h2>
 
-    <section>
-      <div class="card">
-        <p>
-          2022 年底实习期间接触 Web3 行业，从事矿机社媒运营。
-          2023 年毕业后进入 GameFi 赛道，负责游戏项目的冷启动与内测合作，
-          并与 The Sandbox、Counter Fire 等项目展开合作。
-          2024 年进入 VC 机构参与 AI 项目孵化，负责运营活动设计与生态建设，
-          随后加入 Gradient 团队，负责中文社区内容运营与本地增长，策划并组织多场线上线下活动。
-        </p>
-      </div>
-    </section>
-
-    <section>
-  <h2>正在探索</h2>
-  <div class="card">
-    <p>
-      · AI-native 产品与社区增长方式<br>
-      · Web3 与创作者经济的结合<br>
-      · 早期项目从 0 → 1 的冷启动策略
-    </p>
-  </div>
-</section>
-
-   
-    <section>
-      <h2>照片<h2>
       <div class="photo-slider">
-        <img src="photo-1.jpg">
-        <img src="photo-2.jpg">
-        <img src="photo-3.jpg">
-        <img src="photo-4.jpg">
-        <img src="photo-5.jpg">
+        <img src="photo-1.jpg" alt="Alicia photo 1">
+        <img src="photo-2.jpg" alt="Alicia photo 2">
+        <img src="photo-3.jpg" alt="Alicia photo 3">
       </div>
     </section>
 
     <section>
-      <h2>联系方式</h2>
+      <h2 data-lang="zh" class="active">联系方式</h2>
+      <h2 data-lang="en">Contact</h2>
+
       <div class="card">
-        <p style="margin-bottom:12px;">
-          欢迎各种合作私信：头脑风暴，社区建设，早期项目
+        <p data-lang="zh" class="active">
+          欢迎合作与交流<br>
+          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br>
+          X / Twitter: <a href="https://x.com/aliciafights">@aliciafights</a><br>
+          Telegram: <a href="https://t.me/aliciafights">@aliciafights</a>
         </p>
-        <p>
-          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br />
-          X / Twitter：
-          <a href="https://x.com/aliciafights" target="_blank">@aliciafights</a><br />
-          Telegram：
-          <a href="https://t.me/aliciafights" target="_blank">@aliciafights</a>
+
+        <p data-lang="en">
+          Open to collaboration and early-stage projects<br>
+          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br>
+          X / Twitter: <a href="https://x.com/aliciafights">@aliciafights</a><br>
+          Telegram: <a href="https://t.me/aliciafights">@aliciafights</a>
         </p>
       </div>
     </section>
 
     <footer>
-      <div>© 2025 Alicia · Built with curiosity</div>
+      © 2025 Alicia · Built with curiosity
     </footer>
+
   </div>
 
   <script>
-    for (let i = 0; i < 10; i++) {
-      const b = document.createElement('div');
-      b.className = 'butterfly';
-      b.style.left = Math.random() * 100 + 'vw';
-      b.style.top = 100 + Math.random() * 20 + 'vh';
-      b.style.animationDuration = 18 + Math.random() * 20 + 's';
-      document.body.appendChild(b);
+    const zhBtn = document.getElementById('zhBtn');
+    const enBtn = document.getElementById('enBtn');
+
+    function switchLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+      zhBtn.classList.toggle('active', lang === 'zh');
+      enBtn.classList.toggle('active', lang === 'en');
     }
+
+    zhBtn.onclick = () => switchLang('zh');
+    enBtn.onclick = () => switchLang('en');
   </script>
+
 </body>
 </html>
 
