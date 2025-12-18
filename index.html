@@ -61,11 +61,17 @@
 
     header h1 {
       font-size: 52px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, #ffffff, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    header .tagline {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
     }
 
     header p {
@@ -84,7 +90,6 @@
       letter-spacing: -0.01em;
     }
 
-    /* 卡片 */
     .card {
       background: linear-gradient(
         180deg,
@@ -101,7 +106,6 @@
       color: var(--muted);
     }
 
-    /* Experience */
     .exp-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -135,7 +139,6 @@
       color: var(--muted);
     }
 
-    /* Photos（已移动到 Experience 下方） */
     .photo-slider {
       display: flex;
       gap: 18px;
@@ -164,7 +167,6 @@
       gap: 16px;
     }
 
-    /* 蝴蝶（保留，风格更柔） */
     .butterfly {
       position: absolute;
       width: 24px;
@@ -207,40 +209,64 @@
 
     <header>
       <h1>Alicia</h1>
-      <p>一个热衷于探索 AI 的创作者  
+      <div class="tagline">AI × Web3 × Community Builder</div>
+      <p>一个热衷于探索 AI 的 00 后创作者  
       #Web3 #AI #BD #中 / 英 / 法</p>
     </header>
 
     <section>
-      <h2>About Me</h2>
+      <h2>关于我</h2>
       <div class="card">
         <p>
-          性格外向，擅长建立人际链接，沟通高效，能快速识别并促成潜在合作机会。
-          具备高度执行力与统筹力，能同时推进多个任务。
-          对新技术和新趋势保持高度敏感，乐于接受挑战。
+          我习惯从长期合作与生态视角思考问题，擅长在早期阶段建立信任关系并促成有效连接。
+          在工作中兼具执行力与统筹能力，能够并行推进多项任务。
+          对 AI 与 Web3 的交叉应用保持高度敏感，关注技术如何真正落地到用户与社区，
+          并善于将复杂概念转化为清晰、有吸引力的表达。
         </p>
       </div>
     </section>
 
     <section>
-      <h2>Experience / Projects</h2>
+      <h2>经验</h2>
       <div class="exp-links">
         <a class="exp-link" href="https://x.com/DarkStar_game" target="_blank">
-          <h3>BD In GameFi</h3>
-          <p>游戏项目冷启动与内测合作</p>
+          <h3>BD · GameFi</h3>
+          <p>游戏项目冷启动与早期用户合作搭建</p>
         </a>
         <a class="exp-link" href="https://x.com/RyzeLabs" target="_blank">
           <h3>VC 项目孵化</h3>
-          <p>AI 项目运营与早期生态建设</p>
+          <p>AI 项目运营、活动设计与生态建设</p>
         </a>
         <a class="exp-link" href="https://x.com/Gradient_HQ" target="_blank">
           <h3>Gradient 中文社区</h3>
-          <p>社区内容与本地化增长</p>
+          <p>内容体系建设与本地增长策略</p>
         </a>
       </div>
     </section>
 
-    <!-- Photos 已移动到这里 -->
+    <section>
+      <div class="card">
+        <p>
+          2022 年底实习期间接触 Web3 行业，从事矿机社媒运营。
+          2023 年毕业后进入 GameFi 赛道，负责游戏项目的冷启动与内测合作，
+          并与 The Sandbox、Counter Fire 等项目展开合作。
+          2024 年进入 VC 机构参与 AI 项目孵化，负责运营活动设计与生态建设，
+          随后加入 Gradient 团队，负责中文社区内容运营与本地增长，策划并组织多场线上线下活动。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Currently Exploring</h2>
+      <div class="card">
+        <p>
+          · AI-native 产品与社区增长方式<br>
+          · Web3 与创作者经济的结合<br>
+          · 早期项目从 0 → 1 的冷启动策略
+        </p>
+      </div>
+    </section>
+    
     <section>
       <h2>Photos</h2>
       <div class="photo-slider">
@@ -253,26 +279,28 @@
     </section>
 
     <section>
-      <h2>Contact</h2>
+      <h2>联系方式</h2>
       <div class="card">
+        <p style="margin-bottom:12px;">
+          Open to collaboration, community building, and early-stage projects.
+        </p>
         <p>
-          📧 aliciazhou03@gmail.com<br />
-          X / Twitter：@aliciafights<br />
-          Telegram：@aliciafights
+          📧 <a href="mailto:aliciazhou03@gmail.com">aliciazhou03@gmail.com</a><br />
+          X / Twitter：
+          <a href="https://x.com/aliciafights" target="_blank">@aliciafights</a><br />
+          Telegram：
+          <a href="https://t.me/aliciafights" target="_blank">@aliciafights</a>
         </p>
       </div>
     </section>
 
     <footer>
-      <div>© 2025 Alicia</div>
-      <div class="links">
-        <a href="https://x.com/aliciafights" target="_blank">@aliciafights</a>
-      </div>
+      <div>© 2025 Alicia · Built with curiosity</div>
     </footer>
   </div>
 
   <script>
-    for(let i = 0; i < 10; i++){
+    for (let i = 0; i < 10; i++) {
       const b = document.createElement('div');
       b.className = 'butterfly';
       b.style.left = Math.random() * 100 + 'vw';
@@ -283,5 +311,7 @@
   </script>
 </body>
 </html>
+
+
 
 
